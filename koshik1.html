@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Shop</title>
+<style>
+     body{
+    background-color: rgb(214, 152, 250);}
+
+    #koshik {
+    margin-top: 20px; 
+    font-size: 30px;
+}
+#totalPrice {
+    font-size: 20px;
+}
+button {
+        margin: -90px 20px 0 10px;
+        border-radius: 10px;
+        width: 200px;
+        height: 50px;
+        background-color: rgb(203, 112, 255);
+    }
+    button:hover{
+            background-color: rgb(94, 66, 255);
+      transform: scale(1.1);            
+      transition:  300ms cubic-bezier(0.07, 0.76, 0.93, 0.59) 0.2s, 200ms ease-in-out 0.2s;
+      color: #f9e9ff;
+        }
+            img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    width: 340px;
+    height: 400px;
+          }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    var cartItems = localStorage.getItem("cartItems") ? localStorage.getItem("cartItems").split(",") : [];
+    updateCart();
+
+    $("h3, h4, h5, h6, h1").click(function(){
+        var item = $(this).siblings("h2").text().trim(); 
+        cartItems.push(item);
+        updateCart();
+    });
+
+    $("body").on("click", ".remove-item", function(){
+        var itemIndex = $(this).data("index");
+        cartItems.splice(itemIndex, 1);
+        updateCart();
+    });
+
+    $("body").on("click", "#payButton", function(){
+        cartItems = []; 
+        updateCart(); 
+    });
+
+    function updateCart() {
+        $("#koshik").empty();
+        cartItems.forEach(function(item, index) {
+            $("#koshik").append("<li>" + item + " <span class='remove-item' data-index='" + index + "'>❌</span></li>");
+        });
+        $("#totalPrice").text("В корзине " + cartItems.length + " товаров");
+        localStorage.setItem("cartItems", cartItems.join(","));
+    }
+});
+</script>
+</head>
+<body>
+    <h3>Корзина🛒<i></h3>
+        <a href="shop1.html"><button>Товары</button></a>     <a href="oplacheno.html"><button id="payButton">Оплатить</button></a>
+    <ul id="koshik"></ul>
+    <div id="totalPrice"></div>
+    <link href="svet.css" rel="stylesheet" type="text/css">
+    <img src="harryz.jpg" alt="">
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Shop</title>
+<style>
+    body{
+    background-color: rgb(175, 115, 253);
+}
+.towar1, .towar2, .towar3, .towar4, .towar5, .towar6,.towar7,.towar8,.towar9, .towar10{
+background-color:  rgb(226, 183, 255);
+width: 250px;
+height: 300px;
+margin: 10px 10px 10px 10px;
+display: inline-block;
+border: 2px solid #c445ff; 
+border-radius: 5px; 
+box-shadow: 0px 0px 5px 2px #c445ff; 
+}
+img{
+width: 150px;
+height: 150px;
+margin: 10px;
+}
+h2{
+    
+margin: -10px 10px 10px 10px;
+color: black;
+
+
+}
+
+h3, h4, h5, h6, h1{
+margin: -30px 10px 10px 10px;
+cursor: pointer; 
+font-size: 30px;
+}
+#h{
+font-size: 45px;
+margin: 10px;
+color: rgb(255, 255, 255);
+}
+#hh{
+    text-align: end;
+    margin: -100px 0 30px 0;
+}
+a{
+    text-decoration: none !important;
+}
+#hhh{
+    margin: -100px 0 30px 1270px;
+    color:white;
+}
+
+h3:hover, h4:hover, h5:hover, h6:hover, h1:hover{
+    color: rgb(132, 0, 255);
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+
+    var cartItems = localStorage.getItem("cartItems") ? localStorage.getItem("cartItems").split(",") : [];
+
+
+    function addItemToCart(item) {
+        cartItems.push(item);
+ 
+        localStorage.setItem("cartItems", cartItems.join(","));
+    }
+
+    function updateCart() {
+        $("#koshik").empty();
+     
+        cartItems.forEach(function(item) {
+            $("#koshik").append("<li>" + item + " ✔️</li>");
+        });
+    }
+
+   
+    $("h3, h4, h5, h6, h1").click(function(){
+       
+        var item = $(this).siblings("a").text().trim(); 
+
+        addItemToCart(item);
+
+        updateCart();
+    });
+});
+</script>
+</head>
+</head>
+<body>
+    <h2 id="h">Магазин⚡ </h2> <a href="Golovna.html" ><h2 id="hhh">Меню /</h2></a><a href="koshik1.html"><h2 id="hh">🛒</h2></a>
+    <div id="towary">
+        <div class="towar1"> 
+          <img src="knigi.jpg" alt=""><a href="knigi1.html"><h2>Книги 700грн</h2></a><h3>В корзину</h3> 
+        </div>
+        <div class="towar2"> 
+            <img src="maxovik.jpg" alt=""><a href="mahovik.html"><h2>Маховик 200грн</h2></a><h4>В корзину</h4> 
+        </div>
+        <div class="towar3"> 
+            <img src="mantia.jpg" alt=""><a href="mantia.html"><h2>Мантия 1500грн</h2></a><h5>В корзину</h5> 
+        </div> 
+        <div class="towar4"> 
+            <img src="karty.jpg" alt=""><a href="karty.html"><h2>Карты 150грн</h2></a><h6>В корзину</h6> 
+        </div>
+        <div class="towar5"> 
+            <img src="fig.jpg" alt=""><a href="figurki.html"><h2>Фигурки 600грн</h2></a><h1>В корзину</h1> 
+        </div>
+        <div class="towar6"> 
+            <img src="lego.jpg" alt=""><h2>Лего 2100грн</h2><h3>В корзину</h3> 
+          </div>
+          <div class="towar7"> 
+            <img src="chaj.jpg" alt=""><h2>Чай 100грн</h2><h3>В корзину</h3> 
+          </div>
+          <div class="towar8"> 
+            <img src="kalendar.jpg" alt=""><h2>Календарь 700грн</h2><h3>В корзину</h3> 
+          </div>
+          <div class="towar9"> 
+            <img src="boks.jpg" alt=""><h2>Бокс 5400грн</h2><h3>В корзину</h3> 
+          </div>
+          <div class="towar10"> 
+            <img src="bloknot.jpg" alt=""><h2>Блокнот 200грн</h2><h3>В корзину</h3> 
+          </div>
+    </div>
+</body>
+</html>
